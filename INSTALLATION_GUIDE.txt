@@ -1,0 +1,49 @@
+INSTALLATION INSTRUCTIONS:
+CHECKOUT BY AMAZON SIGNATURE GENERATION SAMPLE CODE
+Author: Nitin Purswani
+Copyright: 2007-2014 Amazon Technologies, Inc  
+*-*-**-***-*****-********-*************
+
+*-*-**-***-*****-********-*************
+PREREQUISITES
+*-*-**-***-*****-********-*************
+Please have the following software packages available on your systems
+before running the demo.
+
+1. PHP 5
+
+*-*-**-***-*****-********-*************
+INSTALL
+*-*-**-***-*****-********-*************
+1. Unzip the sample code into your server root, preserving the directory 
+   structure.
+2. Modify <server-root>/signature/merchant/MerchantSignedCartDemo.php
+   and update values of the merchantID, accessKeyID and secretKeyID variables
+   near the beginning of the php file.
+
+
+*-*-**-***-*****-********-*************
+USAGE
+*-*-**-***-*****-********-*************
+Access the demo by using the following url:
+
+http://<your webserver hostname>/signature/merchant/MerchantSignedCartDemo.php
+
+Example output:
+--------------------- Initialization ------------------------
+Initialized program with arguments:
+	Merchant ID: ...
+	Access Key ID: ...
+	Secret Key ID: ...
+
+--------------------- HTML Cart Example ---------------------
+1a. Merchant signature input: ...
+1b. Generated signature: ...
+1c. Generated cart html:
+...
+
+--------------------- XML Cart Example ---------------------
+2a. Merchant signature input: ...
+2b. Generated signature: ...
+2c. Generated cart html:
+...
