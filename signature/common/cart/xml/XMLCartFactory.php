@@ -71,7 +71,7 @@ class XMLCartFactory extends CartFactory {
      * @param awsAccessKeyID
      */
     private function getCartXML($merchantID, $awsAccessKeyID) {
-      $xml = 
+      $xml =
 	"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" .
 	"<Order xmlns=\"http://payments.amazon.com/checkout/2008-06-15/\">" .
 	"    <ClientRequestId>123457</ClientRequestId>" .
@@ -82,25 +82,25 @@ class XMLCartFactory extends CartFactory {
       foreach ($cart->commerce_line_items['und'] as $line_item_id) {
 	$line_item = commerce_line_item_load($line_item_id);
 	list($quantity) = explode('.', $line_item->quantity);
-	  $xml .=  "      <Item>" .
-	    "         <SKU>" . $line_item_id->line_item_label . "</SKU>" .
-	    "         <MerchantId>" . $merchantID . "</MerchantId>" .
-	    "         <Title>" . $line_item->line_item_label . "</Title>" .
-	    "         <Description>" . $line_item->line_item_label . "</Description>" .
-	    "         <Price>" .
-	    "            <Amount>" . (0 + $line_item->commerce_unit_price['und'][0]['amount'] / 100) . "</Amount>" .
-	    "            <CurrencyCode>INR</CurrencyCode>" .
-	    "         </Price>" .
-	    "         <Quantity> " . $quantity . "</Quantity>" .
-	    "         <Weight>" .
-	    "            <Amount>.5</Amount>" .
-	    "            <Unit>kg</Unit>" .
-	    "         </Weight>" .
-	    "         <Category>Tshirts</Category>" .
-	    "      </Item>" ;
+	$xml .=  "      <Item>" .
+	  "         <SKU>" . $line_item->line_item_label . "</SKU>" .
+	  "         <MerchantId>" . $merchantID . "</MerchantId>" .
+	  "         <Title>" . $line_item->line_item_label . "</Title>" .
+	  "         <Description>" . $line_item->line_item_label . "</Description>" .
+	  "         <Price>" .
+	  "            <Amount>" . (0 + $line_item->commerce_unit_price['und'][0]['amount'] / 100) . "</Amount>" .
+	  "            <CurrencyCode>INR</CurrencyCode>" .
+	  "         </Price>" .
+	  "         <Quantity> " . $quantity . "</Quantity>" .
+	  "         <Weight>" .
+	  "            <Amount>.5</Amount>" .
+	  "            <Unit>kg</Unit>" .
+	  "         </Weight>" .
+	  "         <Category>Tshirts</Category>" .
+	  "      </Item>" ;
 
       }
-      $xml .= 
+      $xml .=
 	"    </Items>" .
 	"    </Cart>" .
 	"</Order>";
