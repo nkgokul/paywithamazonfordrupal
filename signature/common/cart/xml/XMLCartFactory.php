@@ -51,12 +51,12 @@ class XMLCartFactory extends CartFactory {
 	$cartHTML = $cartHTML . CartFactory::$CBA_BUTTON_DIV;       
 	// construct the order-input section
 	$encodedCart = $this->getCart($merchantID, $awsAccessKeyID);
-        $input = ereg_replace("\\[ORDER\\]", $encodedCart, XMLCartFactory::$CART_ORDER_INPUT_FIELD);
-        $input = ereg_replace("\\[SIGNATURE\\]", $signature, $input);
-        $input = ereg_replace("\\[AWS_ACCESS_KEY_ID\\]", $awsAccessKeyID, $input);
-        $widgetScript = ereg_replace("\\[CART_TYPE\\]", "XML",CartFactory::$STANDARD_CHECKOUT_WIDGET_SCRIPT);
-        $widgetScript = ereg_replace("\\[MERCHANT_ID\\]", $merchantID,$widgetScript);
-        $widgetScript =ereg_replace ("\\[CART_VALUE\\]",$input ,$widgetScript);
+        $input = preg_replace("\\[ORDER\\]", $encodedCart, XMLCartFactory::$CART_ORDER_INPUT_FIELD);
+        $input = preg_replace("\\[SIGNATURE\\]", $signature, $input);
+        $input = preg_replace("\\[AWS_ACCESS_KEY_ID\\]", $awsAccessKeyID, $input);
+        $widgetScript = preg_replace("\\[CART_TYPE\\]", "XML",CartFactory::$STANDARD_CHECKOUT_WIDGET_SCRIPT);
+        $widgetScript = preg_replace("\\[MERCHANT_ID\\]", $merchantID,$widgetScript);
+        $widgetScript =preg_replace ("\\[CART_VALUE\\]",$input ,$widgetScript);
 
         $cartHTML = $cartHTML . $widgetScript;        
 

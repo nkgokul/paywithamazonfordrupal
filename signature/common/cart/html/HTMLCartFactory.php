@@ -47,8 +47,8 @@ abstract class HTMLCartFactory extends CartFactory {
       $cart = '';
 
       foreach ($parameterMap as $key => $value) {
-         $input = ereg_replace ("\\[KEY\\]", $key, HTMLCartFactory::$CART_FORM_INPUT_FIELD);
-         $input = ereg_replace ("\\[VALUE\\]", htmlentities( $value,ENT_QUOTES,"UTF-8"), $input);
+         $input = preg_replace ("\\[KEY\\]", $key, HTMLCartFactory::$CART_FORM_INPUT_FIELD);
+         $input = preg_replace ("\\[VALUE\\]", htmlentities( $value,ENT_QUOTES,"UTF-8"), $input);
 
          $cart = $cart . $input;
       }
@@ -69,13 +69,13 @@ abstract class HTMLCartFactory extends CartFactory {
       $cartHTML = '';
       $cartHTML = $cartHTML . CartFactory::$CART_JAVASCRIPT_START;
       $cartHTML = $cartHTML . CartFactory::$CBA_BUTTON_DIV;
-      $cartHTML = $cartHTML . ereg_replace ("\\[MERCHANT_ID\\]", $merchantID, CartFactory::$CART_FORM_START);
+      $cartHTML = $cartHTML . preg_replace ("\\[MERCHANT_ID\\]", $merchantID, CartFactory::$CART_FORM_START);
       $cartHTML = $cartHTML . $cartInput;
-      $cartHTML = $cartHTML . ereg_replace ("\\[SIGNATURE\\]", $signature, CartFactory::$CART_FORM_SIGNATURE_INPUT_FIELD);
+      $cartHTML = $cartHTML . preg_replace ("\\[SIGNATURE\\]", $signature, CartFactory::$CART_FORM_SIGNATURE_INPUT_FIELD);
       $cartHTML = $cartHTML . CartFactory::$CART_FORM_END;
-      $widgetScript = ereg_replace ("\\[CART_VALUE\\]","CBACartForm",CartFactory::$STANDARD_CHECKOUT_WIDGET_SCRIPT);
-      $widgetScript = ereg_replace("\\[CART_TYPE\\]", "HTML",$widgetScript);
-      $widgetScript = ereg_replace("\\[MERCHANT_ID\\]", $merchantID,$widgetScript);
+      $widgetScript = preg_replace ("\\[CART_VALUE\\]","CBACartForm",CartFactory::$STANDARD_CHECKOUT_WIDGET_SCRIPT);
+      $widgetScript = preg_replace("\\[CART_TYPE\\]", "HTML",$widgetScript);
+      $widgetScript = preg_replace("\\[MERCHANT_ID\\]", $merchantID,$widgetScript);
       $cartHTML = $cartHTML . $widgetScript;
       return $cartHTML;
    }
